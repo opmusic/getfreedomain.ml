@@ -7,20 +7,32 @@
     <!-- script src="//api.peer5.com/peer5.js?id=7jmhgn4jjgkyt341sck1"></script -->
     <!-- script src="//api.peer5.com/peer5.videojs7.plugin.js"></script -->
     
-    <script type="application/javascript" src="https://cdn.strivetech.io/services/storage/v0/entity-resource/1293553459290697728/1293553711766818816/gwc.min.js"></script>    
-    <!-- Player scripts -->
-    <link rel="stylesheet" href="//vjs.zencdn.net/7.7.4/video-js.min.css">
-    <script src="https://vjs.zencdn.net/7.7.4/video.min.js"></script>
+    <!-- vidictPeer library -->
+    <script src='https://cdnjs.vidict.net/scripts/vidictPeer.min.js?id=603b8831c0d4639a462b&sd=1'></script>
+
+
+    <!-- vidictpeer_hlsjs library -->
+    <script src='https://cdnjs.vidict.net/scripts/vidictPeer_hlsjs.min.js'></script>    <!-- Player scripts -->
+    
+    <script src="//cdn.jsdelivr.net/npm/hls.js@0.13.1/dist/hls.min.js"></script>
+    
 </head>
 <body>
-    <video id="player" class="video-js vjs-default-skin" height="400" width="700" controls preload="none"></video>
+    <video id="player"></video>
     <script>
-        var player = videojs('#player', {
-          sources: [{
-            src: 'https://d11apxecd9gciv.cloudfront.net/livehttporigin/Stream1/playlist.m3u8',
-            type: "application/x-mpegURL"
-          }]
+      if (Hls.isSupported()) {
+        var video = document.getElementById('player');
+        var player = new Hls({ fLoader: vidictLoader });
+        player.attachMedia(video);
+        player.on(Hls.Events.MEDIA_ATTACHED, function() {
+          player.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8');
+          player.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+          });
         });
+      } else {
+        console.error('Hls.js is not supported in this browser');
+      }
     </script>
 </body>
 </html>
