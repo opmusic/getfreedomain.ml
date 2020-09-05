@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>course</title>
+
+    <script src="https://web-v2.strivetech.io/web/static/js/strive-loader.v2.min.js?manifest_main=68747470733a2f2f73747269766564622d726573742d76322e737472697665746563682e696f2f73747269766564622f726573742f737761726d5f7765625f6d616e69666573742f313238383131363331373538383534393633322f31323838313137303731303939343537353336"></script>
+
+    <!-- Player scripts -->
+    <link rel="stylesheet" href="//vjs.zencdn.net/7.7.4/video-js.min.css">
+    <script src="https://vjs.zencdn.net/7.7.4/video.min.js"></script>
+</head>
+<body>
+    <video id="player" class="video-js vjs-default-skin" height="400" width="700" controls preload="none"></video>
+    <script>
+        var player = videojs('#player', {
+          sources: [{
+            src: 'https://d11apxecd9gciv.cloudfront.net/livehttporigin/Stream1/playlist.m3u8',
+            type: "application/x-mpegURL"
+          }]
+        });
+    </script>
+</body>
+</html>
