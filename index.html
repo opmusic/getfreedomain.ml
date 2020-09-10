@@ -8,11 +8,11 @@
     <!-- script src="//api.peer5.com/peer5.videojs7.plugin.js"></script -->
     
     <!-- vidictPeer library -->
-    <script src='https://cdnjs.vidict.net/scripts/vidictPeer.min.js?id=603b8831c0d4639a462b&sd=1'></script>
+    <!--script src='https://cdnjs.vidict.net/scripts/vidictPeer.min.js?id=603b8831c0d4639a462b&sd=1'></script>
 
 
     <!-- vidictpeer_hlsjs library -->
-    <script src='https://cdnjs.vidict.net/scripts/vidictPeer_hlsjs.min.js'></script>    <!-- Player scripts -->
+    <!--script src='https://cdnjs.vidict.net/scripts/vidictPeer_hlsjs.min.js'></script>    <!-- Player scripts -->
     
     <script src="//cdn.jsdelivr.net/npm/hls.js@0.13.1/dist/hls.min.js"></script>
     
@@ -25,7 +25,7 @@
         var player = new Hls({ fLoader: vidictLoader });
         player.attachMedia(video);
         player.on(Hls.Events.MEDIA_ATTACHED, function() {
-          player.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8');
+          player.loadSource('https://playercdn.cdnvideo.ru/aloha/players/lectio_player.html?account=07007_akovalsky&source=https://live-streams.cdnvideo.ru/cdnvideo/caminandes/playlist.m3u8');
           player.on(Hls.Events.MANIFEST_PARSED, function() {
             video.play();
           });
