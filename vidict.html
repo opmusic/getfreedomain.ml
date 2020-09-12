@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>course</title>
+
+    <!-- script src="//api.peer5.com/peer5.js?id=7jmhgn4jjgkyt341sck1"></script -->
+    <!-- script src="//api.peer5.com/peer5.videojs7.plugin.js"></script -->
+    
+    <!-- vidictPeer library -->
+    <script src='https://cdnjs.vidict.net/scripts/vidictPeer.min.js?id=603b8831c0d4639a462b&sd=1'></script>
+
+
+    <!-- vidictpeer_hlsjs library -->
+    <script src='https://cdnjs.vidict.net/scripts/vidictPeer_hlsjs.min.js'></script>    <!-- Player scripts -->
+    
+    <script src="//cdn.jsdelivr.net/npm/hls.js@0.13.1/dist/hls.min.js"></script>
+    
+</head>
+<body>
+    <video id="player"></video>
+    <script>
+      if (Hls.isSupported()) {
+        var video = document.getElementById('player');
+        var player = new Hls({ fLoader: vidictLoader });
+        player.attachMedia(video);
+        player.on(Hls.Events.MEDIA_ATTACHED, function() {
+          player.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8');
+          player.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+          });
+        });
+      } else {
+        console.error('Hls.js is not supported in this browser');
+      }
+    </script>
+</body>
+</html>
