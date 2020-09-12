@@ -7,6 +7,9 @@
     <!-- script src="//api.peer5.com/peer5.js?id=7jmhgn4jjgkyt341sck1"></script -->
     <!-- script src="//api.peer5.com/peer5.videojs7.plugin.js"></script -->
     
+    <script src="https://api.peer5.com/peer5.js?id=8xv3gqt9wm2d9xrb7hwt"></script>
+    <script src="//api.peer5.com/peer5.hlsjs.plugin.js"></script>
+    
     <!-- vidictPeer library -->
     <!--script src='https://cdnjs.vidict.net/scripts/vidictPeer.min.js?id=603b8831c0d4639a462b&sd=1'></script>
 
@@ -22,10 +25,10 @@
     <script>
       if (Hls.isSupported()) {
         var video = document.getElementById('player');
-        var player = new Hls({ fLoader: vidictLoader });
+        var player = new Hls();
         player.attachMedia(video);
         player.on(Hls.Events.MEDIA_ATTACHED, function() {
-          player.loadSource('https://playercdn.cdnvideo.ru/aloha/players/lectio_player.html?account=07007_akovalsky&source=https://live-streams.cdnvideo.ru/cdnvideo/caminandes/playlist.m3u8');
+          player.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8');
           player.on(Hls.Events.MANIFEST_PARSED, function() {
             video.play();
           });
