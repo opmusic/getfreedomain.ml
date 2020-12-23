@@ -6,9 +6,33 @@
 
     <script type="application/javascript" src="https://cdn.strivetech.io/services/storage/v0/entity-resource/1293553459290697728/1293553711766818816/gwc.min.js"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/hls.js@0.13.1/dist/hls.min.js"></script>
+    
+</head>
+<body>
+    <video id="player"></video>
+    <script>
+      if (Hls.isSupported()) {
+        var video = document.getElementById('player');
+        var player = new Hls();
+        player.attachMedia(video);
+        player.on(Hls.Events.MEDIA_ATTACHED, function() {
+          player.loadSource('http://videotest20201221.s3.amazonaws.com/sample/sample.m3u8');
+          player.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+          });
+        });
+      } else {
+        console.error('Hls.js is not supported in this browser');
+      }
+    </script>
+</body>
+</html>
+
+    
     <!-- Player scripts -->
-    <link rel="stylesheet" href="//vjs.zencdn.net/7.7.4/video-js.min.css">
-    <script src="https://vjs.zencdn.net/7.7.4/video.min.js"></script>
+    <!--link rel="stylesheet" href="//vjs.zencdn.net/7.7.4/video-js.min.css">
+    <!--script src="https://vjs.zencdn.net/7.7.4/video.min.js"></script>
 </head>
 <body>
     <video id="player" class="video-js vjs-default-skin" height="400" width="700" controls preload="none"></video>
