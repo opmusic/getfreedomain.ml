@@ -1,28 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <script src="https://swarm.video/swarm.js"></script>
-    <link rel="stylesheet" href="https://vjs.zencdn.net/7.6.0/video-js.css"></script>
-    <script src="https://vjs.zencdn.net/7.6.0/video.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls.js@latest"></script>
+<script src="https://swarm.video/swarm.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js">s</script>
 </head>
 <body>
-    <video id="video" class="video-js vjs-default-skin" autoplay muted controls> </video>
+    <div id="player"> </div>
 </body>
 <script>
 let engine = new p2pml.hlsjs.Engine({segments: {swarmId: "CustomSwarmId"},loader: {httpUseRanges:false, WaitForTracker: true, WaitForTrackerCounter:4500}});
-let player = videojs("video", {
-    html5: {
+player = new Clappr.Player({
+    source:'https://wowza.peer5.com/live/smil:bbb_abr.smil/playlist.m3u8',
+    mimeType: 'application/x-mpegURL',
+    parentId: '#player',
+    playback: {
         hlsjsConfig: {
-            liveSyncDurationCount: 7,
-            loader: engine.createLoaderClass()
-            }
-         }
-    });
-p2pml.hlsjs.initVideoJsContribHlsJsPlayer(player);
-player.src({
-    src: 'https://wowza.peer5.com/live/smil:bbb_abr.smil/playlist.m3u8',
-    type: "application/x-mpegURL"
+        liveSyncDurationCount: 7,
+        loader: engine.createLoaderClass()}
+    }
 });
+p2pml.hlsjs.initClapprPlayer(player);
 </script>
 </html>
