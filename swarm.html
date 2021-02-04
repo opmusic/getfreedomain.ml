@@ -1,1 +1,28 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://swarm.video/swarm.js"></script>
+    <link rel="stylesheet" href="https://vjs.zencdn.net/7.6.0/video-js.css"></script>
+    <script src="https://vjs.zencdn.net/7.6.0/video.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls.js@latest"></script>
+</head>
+<body>
+    <video id="video" class="video-js vjs-default-skin" autoplay muted controls> </video>
+</body>
+<script>
+let engine = new p2pml.hlsjs.Engine({segments: {swarmId: "CustomSwarmId"},loader: {httpUseRanges:false, WaitForTracker: true, WaitForTrackerCounter:4500}});
+let player = videojs("video", {
+    html5: {
+        hlsjsConfig: {
+            liveSyncDurationCount: 7,
+            loader: engine.createLoaderClass()
+            }
+         }
+    });
+p2pml.hlsjs.initVideoJsContribHlsJsPlayer(player);
+player.src({
+    src: 'https://wowza.peer5.com/live/smil:bbb_abr.smil/playlist.m3u8',
+    type: "application/x-mpegURL"
+});
+</script>
+</html>
