@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>course</title>
+        <script data-n-head="ssr" src="https://s3.hitv.com/libs/??hls-loader/0.1.24/hls-loader.min.js?202001070022"></script>
+        <script data-n-head="ssr" src="https://s1.hitv.com/libs/??hlsjs/1.0.9/hls.min.js?202001070022"></script>
+</head>
+<body>
+<video id="video"></video>
+    <script data-n-head="ssr" src= "./mgtv_kernel.min.js"> </script>
+    <script>
+      var a = {
+          debug: !1,
+          enableBitrateTest: !1,
+          enableWorker: !0,
+          maxBufferLength: 60,
+          maxBufferSize: 6e6,
+          manifestLoadingMaxRetry: 0,
+          manifestLoadingTimeOut: 11e3,
+          levelLoadingTimeOut: 11e3,
+          levelLoadingMaxRetry: 2,
+          nudgeMaxRetry: 20,
+          fragLoadingRetryDelay: 0,
+          levelLoadingRetryDelay: 0,
+          fragLoadingMaxRetry: 2,
+          autoStartLoad: !1,
+          p2p: {enable: 1},
+          cdnld: "web01"
+        };
+
+      var kernel = mi(a);
+      var t =  new si;
+      t.setHls(kernel);
+
+      if (Hls.isSupported()) {
+        var video = document.getElementById("video");
+        kernel.attachMedia(video);
+        kernel.on(Hls.Events.MEDIA_ATTACHED, function() {
+          kernel.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8')
+          <!--player.loadSource('http://videotest20201221.s3.amazonaws.com/sample/sample.m3u8');-->
+          kernel.startLoad(0);
+          kernel.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+          });
+        });
+      } else {
+        console.error('Hls.js is not supported in this browser');
+      }
+    </script>
+</body>
+</html>
