@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>course</title>
-    <!-- Video.js build -->
-    <link href="//vjs.zencdn.net/7.4.1/video-js.min.css" rel="stylesheet">
-    <script src="//vjs.zencdn.net/7.4.1/video.min.js"></script>
+    <script type="application/javascript" src="https://cdn.strivetech.io/services/storage/v0/entity-resource/1293553459290697728/1293553711766818816/gwc.min.js"></script>
+  <!-- Hls.js build -->
+	<script src="//cdn.jsdelivr.net/npm/hls.js@0.12.2/dist/hls.min.js"></script>
 
-    <!-- Streamroot source handler plugin -->
-    <script src="//cdn.streamroot.io/videojs-hlsjs-plugin/1/stable/videojs-hlsjs-plugin.js"></script>
-
-    <script src="//cdn.streamroot.io/jwplayer-hls-dna-plugin/1/stable/videojs-hls-dna-plugin.js?srKey=ry-1llfed25"></script>
-    
+<!-- Mesh Delivery wrapper -->
+	<script src="//cdn.streamroot.io/hlsjs-dna-wrapper/1/stable/hlsjs-dna-wrapper.js?srKey=b7a093eb-bf7f-4669-b70b-2c54f974c7a5"></script>
 </head>
 <body>
-    <video id="demoplayer" class="video-js" controls>
-    <source src="https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8" type="application/x-mpegURL">
-    </video>
-    <script>
-      var options = {
-        html5: {
-          hlsjsConfig: {},
-        },
-        dnaConfig: {streamrootKey: 'ry-1llfed25'},
-      };
-      var player = videojs("demoplayer", options);
-    </script>
-
+  <video id="demoplayer"></video>
+  <script>
+    var hlsjsConfig = {};
+    var dnaConfig = {};
+    var hls = new Hls(hlsjsConfig);
+    var wrapper = new HlsjsDnaWrapper(hls, 'b7a093eb-bf7f-4669-b70b-2c54f974c7a5', dnaConfig);
+    var video = document.getElementById('demoplayer');
+    hls.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+        video.play();
+    });
+  </script>
+</body>
 </body>
 </html>
