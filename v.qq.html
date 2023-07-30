@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>course</title>
+        <script src="https://vm.gtimg.cn/thumbplayer/superplayer/1.20.17/superplayer.js?max_age=7776000&amp;v=2307281523"></script>
+        <script src="https://vm.gtimg.cn/thumbplayer/core/1.20.16/txhlsjs-kernel.js?max_age=7776000&amp;v=2307281523"></script>
+        <script src="https://vm.gtimg.cn/thumbplayer/core/1.20.16/demux2fmp4-kernel.js?max_age=7776000&amp;v=2307281523"></script>
+</head>
+<body>
+<video id="video"></video>
+    <script>
+
+      var config = {
+
+        debug: {
+          logModeConfig: {debug: 1, error: 2, info: 1, log: 2, trace: 1, warn: 2},
+          playerId: "9bc72ccfb684240df7d83ea21779dfd7",
+          scopeName: "HlsJs"
+        },
+        manifestLoadingMaxRetry: 2,
+        manifestLoadingRetryDelay: 100,
+        manifestLoadingTimeOut: 10000,
+        maxBufferHole: 0.5,
+        maxBufferLength: 180,
+        maxMaxBufferLength: 180,
+        progressive: true,
+        startFragPrefetch: true,
+        startPosition: 123,
+        testBandwidth: false
+      }
+      var hls = ThumbPlayerKernelHlsjs.Hls;
+      var kernel = new ThumbPlayerKernelHlsjs.Hls(config);
+      if (hls.isSupported()) {
+        var video = document.getElementById("video");
+        kernel.attachMedia(video);
+        kernel.on(hls.Events.MEDIA_ATTACHED, function() {
+          kernel.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8')
+          <!--player.loadSource('http://videotest20201221.s3.amazonaws.com/sample/sample.m3u8');-->
+          kernel.startLoad();
+          kernel.on(hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+          });
+        });
+      } else {
+        console.error('Hls.js is not supported in this browser');
+      }
+    </script>
+</body>
+</html>
