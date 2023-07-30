@@ -47,7 +47,7 @@
         kernel.on(hls.Events.MEDIA_ATTACHED, function() {
           kernel.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8')
           <!--player.loadSource('http://videotest20201221.s3.amazonaws.com/sample/sample.m3u8');-->
-          kernel.load();
+          kernel.startLoad();
           kernel.on(hls.Events.MANIFEST_PARSED, function() {
             video.play();
           });
