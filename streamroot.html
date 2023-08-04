@@ -18,8 +18,8 @@
     var hls = new Hls(hlsjsConfig);
     var wrapper = new HlsjsDnaWrapper(hls, 'b7a093eb-bf7f-4669-b70b-2c54f974c7a5', dnaConfig);
     var video = document.getElementById('demoplayer');
-    <!--hls.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8');-->
-    hls.loadSource('https://videotest20230418.s3.amazonaws.com/hls/hls_1M.m3u8');
+    hls.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8');
+    <!--hls.loadSource('https://videotest20230418.s3.amazonaws.com/hls/hls_1M.m3u8');-->
     hls.attachMedia(video);
     hls.on(Hls.Events.MANIFEST_PARSED,function() {
         video.play();
