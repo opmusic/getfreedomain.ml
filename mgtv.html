@@ -39,7 +39,7 @@
         kernel.attachMedia(video);
         kernel.on(Hls.Events.MEDIA_ATTACHED, function() {
           <!--kernel.loadSource('https://d2al3n45gr0h51.cloudfront.net/2020/06/mtsf_20200616_jeronimodesousa_integr_20200616162350/hls/video.m3u8');-->
-          kernel.loadSource('https://videotest20230418.s3.amazonaws.com/hls/hls.m3u8');
+          kernel.loadSource('https://videotest20230418.s3.amazonaws.com/hls/hls_1M.m3u8');
           kernel.startLoad(0);
           kernel.on(Hls.Events.MANIFEST_PARSED, function() {
             video.play();
